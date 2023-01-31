@@ -44,7 +44,7 @@ public class DivideAndConquerSorting {
             return;
         }
         int length = arr.length;
-        int midIndex = length / 2;
+        int midIndex = (int)(Math.floor(length / 2));
         T[] left = (T[]) new Object[midIndex];
         T[] right = (T[]) new Object[length - left.length];
         for (int i = 0; i < midIndex; i++) {
@@ -53,6 +53,7 @@ public class DivideAndConquerSorting {
         for (int j = midIndex; j < length; j++) {
             right[j - midIndex] = arr[j];
         }
+        System.out.println("left: " + left + " right: " + right);
         mergeSort(left, comparator);
         mergeSort(right, comparator);
         merge(left, right, arr, comparator);
@@ -63,7 +64,7 @@ public class DivideAndConquerSorting {
         int j = 0;
         int k = 0;
         while (i < left.length && j < right.length) {
-            if (comparator.compare(left[i], right[j]) < 0) {
+            if (comparator.compare(left[i], right[j]) <= 0) {
                 result[k++] = left[i++];
             } else {
                 result[k++] = right[j++];
